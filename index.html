@@ -1,0 +1,237 @@
+
+<!-- saved from url=(0041)https://yaden2018.github.io/multispeaker/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>sTransformer:Segment Transformer for Robust Neural Speech Synthesis
+</title>
+    <link rel="shortcut icon" href="https://vancycici.github.io/sTransformer/img/ms.jpg">
+    <link rel="icon" href="https://vancycici.github.io/sTransformer/img/ms.jpg">
+    <link rel="apple-touch-icon" href="https://vancycici.github.io/sTransformer/img/ms.jpg">
+</head>
+<body>
+<script type="text/javascript" async="" src="./Forward-Backward Decoding for Regularizing End-to-End TTS_files/analytics.js.download"></script><script async="" src="./Forward-Backward Decoding for Regularizing End-to-End TTS_files/js"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-125850295-1');
+</script>
+
+<article>
+    <header>
+        <h1>sTransformer:Segment Transformer for Robust Neural Speech Synthesis</h1>
+    </header>
+</article> 
+<div><b>Authors:</b> Xi Wang, Huaiping Ming, Lei He, Frank K. Soong</a> (Submitted to Interspeech 2020</a>)</div>
+ 
+<div><b>Abstract:</b> Neural end-to-end text-to-speech (TTS) , which adopts either a recurrent model, e.g. Tacotron, or an attention one, e.g. Transformer, to characterize a speech utterance, has achieved significant improvement of speech synthesis. However, it is still very challenging to deal with different sentence lengths, particularly, for long sentences where sequence model has limitation of the effective context length. We propose a novel segment-Transformer (s-Transformer), which models speech at segment level where recurrence is reused via cached memories for both the encoder and decoder. Long-range contexts can be captured by the extended memory, meanwhile, the encoder-decoder attention on segment which is much easier to handle. In addition, we employ a modified relative positional self attention to generalize sequence length beyond a period possibly unseen in the training data. By comparing the proposed s-Transformer with the standard Transformer, on short sentences, both achieve the same MOS scores of 4.29, which is very close to 4.32 by the recordings; similar scores of 4.22 vs 4.2 on long sentences, and significantly better for extra-long sentences with a gain of 0.2 in MOS. Since the cached memory is updated with time, the s-Transformer generates rather natural and coherent speech for a long period of time.
+</div> 
+
+<div>
+    <h3>Subjective Preference/MOS test samples from Short-domain test</h3>
+    
+    <div>
+    <h4>Recording in short</h4>
+    <table>
+        <tr>
+            <td class="transcript">“It's miserable , the cigarette business ..”
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="wav/recording_short.wav">
+                </audio>
+            </td>
+        </tr>
+    </table>
+    
+        “Dealers are not back and there is no demand. ”
+        <table><tbody><tr>
+            <td>Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/baseline_short_1.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>sTransformer:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/sTransformer_short_1.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table>
+
+    
+        “It is designated as a terrorist organisation by the UN.”
+        <table><tbody><tr>
+            <td>Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/baseline_short_2.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>sTransformer:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/sTransformer_short_2.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table>
+    
+</div>
+    <h3>Subjective Preference/MOS test samples from Long-domain test</h3>
+    
+    <div>
+    <h4>Recording in long</h4>
+    <table>
+        <tr>
+            <td class="transcript">“Willey's credibility has been destroyed ; the questions about her motives have been devastating , they maintain .”
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="wav/recording_long.wav">
+                </audio>
+            </td>
+        </tr>
+    </table>
+    
+        “Elsewhere in the Middle East, the United Arab Emirates has confirmed nine cases - all involving Chinese citizens - but so far no deaths. ”
+        <table><tbody><tr>
+            <td>Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/baseline_long_1.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>sTransformer:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/sTransformer_long_1.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table> 
+    
+        “The company hopes to restart its own production in China next week but at the moment, there is virtually no demand for cars in China, previously the world's largest market for car sales.”
+        <table><tbody><tr>
+            <td>Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/baseline_long_1.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>sTransformer:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/sTransformer_long_1.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table> 
+    
+</div>
+    <h3>Subjective Preference/MOS test samples from extra-long-domain test</h3>
+    
+    <div>
+    <h4>Recording in extra-long</h4>
+    <table>
+        <tr>
+            <td class="transcript">“Over the course of a year , Earth moves sometimes closer to the sun and sometimes farther away from the sun. Earth's closest approach to the sun , called perihelion , comes in early January and is about ninety one million miles .”
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="wav/recording_xlong.wav">
+                </audio>
+            </td>
+        </tr>
+    </table>
+    
+        “Byron was a notorious rule breaker in his personal life, but he was also a stickler for rhyme and metre. In his poem, When We Two Parted, for example, Byron writes about forbidden love, a love that broke the rules, but does do so by precisely following some well-established poetic laws. And many would argue it is all the more powerful for it.”
+        <table><tbody><tr>
+            <td>Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/baseline_xlong_1.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>sTransformer:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/sTransformer_xlong_1.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table> 
+        
+        “Nearly 350,000 people in Nevada have filed for unemployment since the crisis began, the highest number in the history of the state. Las Vegas-based economic research firm Applied Analysis estimates the city’s current jobless rate is about 25 percent — nearly double the rate during the Great Recession — and rising.”
+        <table><tbody><tr>
+            <td>Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/baseline_xlong_2.wav">
+                </audio>
+            </td>  
+            <td>sTransformer:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/sTransformer_xlong_2.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table> 
+        “So we kind of want to go back to where we were, but we also kind of don’t. We want things to be the same, but we also want them to be different. We want to return to normal but we know deep down that our journey won’t be a return so much as a departure.“
+        <table><tbody><tr>
+            <td>Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/baseline_xlong_3.wav">
+                </audio>
+            </td> 
+            <td>sTransformer:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/sTransformer_xlong_3.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table> 
+</div>
+    <h3>Demo for extremly long audio</h3>
+
+        “Beyond the newspapers and magazines and an occasional novel of the hour, idly taken up and indifferently put aside, it has no literary needs. With this listless multitude we have not to concern ourselves, but rather with  that sufficiently heterogeneous body known as the reading public, the people for whom Mr. Carnegie builds libraries, and the publishers display their wares. Of course, among these there must necessarily be a considerable percentage temperamentally unappreciative of poetry, — just as there are numbers of people born with no ear for music, and numbers, again, born with no color-sense. The lover of poetry is no less born than the poet himself. Yet, as the poet is made as well as born, so is his reader; and there are many who really love poetry without knowing it, but who think they do not care for it, — either because they have contracted a wrong notion of what poetry is, or because they have some time or other made a bad start with the wrong kind.”
+        <table><tbody><tr>
+            <td>sTransformer:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/sTransformer_demo1.wav">
+                </audio>
+            </td> 
+             
+        </tr>
+            
+        <table><tbody><tr>
+        
+        
+
+
+</div>
+
+
+
+</body></html>
